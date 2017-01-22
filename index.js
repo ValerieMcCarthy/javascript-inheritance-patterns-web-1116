@@ -1,21 +1,4 @@
-Skip to content
-This repository
-Search
-Pull requests
-Issues
-Gist
- @ValerieMcCarthy
- Watch 1
-  Star 0
- Fork 7 acohn93/javascript-inheritance-patterns-web-1116
-forked from learn-co-students/javascript-inheritance-patterns-web-1116
- Code  Pull requests 0  Projects 0  Pulse  Graphs
-Branch: master Find file Copy pathjavascript-inheritance-patterns-web-1116/index.js
-3ab34e0  5 hours ago
-@acohn93 acohn93 Done.
-2 contributors @pletcher @acohn93
-RawBlameHistory     
-75 lines (59 sloc)  1.82 KB
+
 const app = "I don't do much."
 
 
