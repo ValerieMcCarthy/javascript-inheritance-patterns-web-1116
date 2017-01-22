@@ -1,1 +1,94 @@
+Skip to content
+This repository
+Search
+Pull requests
+Issues
+Gist
+ @ValerieMcCarthy
+ Watch 1
+  Star 0
+ Fork 7 acohn93/javascript-inheritance-patterns-web-1116
+forked from learn-co-students/javascript-inheritance-patterns-web-1116
+ Code  Pull requests 0  Projects 0  Pulse  Graphs
+Branch: master Find file Copy pathjavascript-inheritance-patterns-web-1116/index.js
+3ab34e0  5 hours ago
+@acohn93 acohn93 Done.
+2 contributors @pletcher @acohn93
+RawBlameHistory     
+75 lines (59 sloc)  1.82 KB
 const app = "I don't do much."
+
+
+function Shape(sides, x, y) {
+  this.sides = sides;
+  this.x = x;
+  this.y = y;
+}
+
+function Quadrilateral(x, y, sideOneLength, sideTwoLength, sideThreeLength, sideFourLength) {
+  // call Shape constructor
+  Shape.call(this, 4, x, y);
+  this.sideOneLength = sideOneLength;
+  this.sideTwoLength = sideTwoLength;
+  this.sideThreeLength = sideThreeLength;
+  this.sideFourLength = sideFourLength;
+}
+
+//inherit from Shape prototype
+Quadrilateral.prototype = Object.create(Shape.prototype);
+Quadrilateral.prototype.constructor = Quadrilateral;
+
+//extend Quadrilateral
+Quadrilateral.prototype.perimeter = function() {
+  return this.sideOneLength + this.sideTwoLength + this.sideThreeLength + this.sideFourLength;
+}
+
+function Rectangle(x, y, width, height) {
+  //call Quadrilateral constructor
+  Quadrilateral.call(this, x, y, width, height, width, height);
+  //set rectangle values
+  this.width = width;
+  this.height = height;
+}
+// set Rectangle prototype to an instance of a Shape
+Rectangle.prototype = Object.create(Quadrilateral.prototype);
+// set Rectangle constructor
+Rectangle.prototype.constructor = Rectangle
+
+// extend with Rectangle behavior
+Rectangle.prototype.area = function() {
+  return this.width * this.height;
+}
+
+function Square(x, y, length) {
+  //call Rectangle constructor
+  Rectangle.call(this, x, y, length, length)
+  this.length = length;
+}
+
+Square.prototype = Object.create(Rectangle.prototype);
+Square.prototype.constructor = Square
+
+var square = new Square(1,1,3);
+square.length;
+// 3 - defined on Square
+
+square.width;
+// 3 - inherited from Rectangle
+
+square.sideOneLength;
+// 3 - inherited from Quadrilateral through Rectangle
+
+square.position();
+// 1,1 - from Shape
+
+square.move(2,3); // from Shape
+square.position();
+// 2,3
+
+square.area();
+// 9 - from Rectangle
+square.perimeter();
+// 12 - from Quadrilateral
+Contact GitHub API Training Shop Blog About
+© 2017 GitHub, Inc. Terms Privacy Security Status Help
